@@ -39,6 +39,8 @@ jobs:
           pwd
           ls -ltra
           cat .env
+          ls -ltra ./logs
+          cat ./logs/app.log
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
