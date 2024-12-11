@@ -32,16 +32,12 @@ jobs:
       
         # Step 4: Create .env file with secrets on run time
       - name: Create .env File
-        env:  # Pass GitHub secrets as environment variables
-          USERNAME_REALTIMEDATA: ${{ secrets.USERNAME_REALTIMEDATA }}
-          PASSWORD_REALTIMEDATA: ${{ secrets.PASSWORD_REALTIMEDATA }}
-          TOkEN : ${{ secrets.TOKEN }}
         run: |
-          echo "USERNAME_REALTIMEDATA=$USERNAME_REALTIMEDATA" >> .env
-          echo "PASSWORD_REALTIMEDATA=$PASSWORD_REALTIMEDATA" >> .env
-          echo "TOKEN=$TOKEN" >> .env
+          echo "USERNAME_REALTIMEDATA=${{ secrets.USERNAME_REALTIMEDATA }}" >> .env
+          echo "PASSWORD_REALTIMEDATA=${{ secrets.PASSWORD_REALTIMEDATA }}" >> .env
+          echo "TOKEN=${{ secrets.TOKEN }}" >> .env
           pwd
-          ls -ltr
+          ls -ltra
           cat .env
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
