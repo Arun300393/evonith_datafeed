@@ -35,10 +35,14 @@ jobs:
         env:  # Pass GitHub secrets as environment variables
           USERNAME_REALTIMEDATA: ${{ secrets.USERNAME_REALTIMEDATA }}
           PASSWORD_REALTIMEDATA: ${{ secrets.PASSWORD_REALTIMEDATA }}
-          TOkEN : ${{ secrets.TOKEN}}
+          TOkEN : ${{ secrets.TOKEN }}
         run: |
           echo "USERNAME_REALTIMEDATA=$USERNAME_REALTIMEDATA" >> .env
           echo "PASSWORD_REALTIMEDATA=$PASSWORD_REALTIMEDATA" >> .env
+          echo "TOKEN=$TOKEN" >> .env
+          pwd
+          ls -ltr
+          cat .env
           
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
