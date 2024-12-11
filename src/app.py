@@ -2,13 +2,15 @@ from utils.logger import setup_logger
 from datetime import datetime
 from workflows.pipeline import data_pipeline
 import logging
+import sys
 
+print(sys.path)
 # Setup the logger at the start of the application
 setup_logger()
 
 log = logging.getLogger("root")
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
     while True:
         start_time = datetime.now()
         log.info(f"Start Time {start_time}")

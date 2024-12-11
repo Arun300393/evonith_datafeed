@@ -1,0 +1,87 @@
+[INFO   | _client           | L1025] 2024-12-11T21:13:08+0530: HTTP Request: POST https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/flows/ "HTTP/1.1 200 OK" | _client.py
+[INFO   | _client           | L1025] 2024-12-11T21:13:09+0530: HTTP Request: POST https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/flow_runs/ "HTTP/1.1 201 Created" | _client.py
+[INFO   | flow_engine           | L496] 2024-12-11T21:13:09+0530: Created flow run 'valiant-capuchin' for flow 'bf-data-200var' | flow_engine.py
+[INFO   | flow_engine           | L631] 2024-12-11T21:13:09+0530: View at https://app.prefect.cloud/account/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspace/6840fcb2-db88-4c53-bff9-3704156490b1/runs/flow-run/b9a64a4b-9a1d-499f-b01d-db7cc6885dcf | flow_engine.py
+[INFO   | _client           | L1025] 2024-12-11T21:13:09+0530: HTTP Request: POST https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/flow_runs/b9a64a4b-9a1d-499f-b01d-db7cc6885dcf/set_state "HTTP/1.1 201 Created" | _client.py
+[INFO   | _client           | L1025] 2024-12-11T21:13:10+0530: HTTP Request: GET https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/flow_runs/b9a64a4b-9a1d-499f-b01d-db7cc6885dcf "HTTP/1.1 200 OK" | _client.py
+[INFO   | pipeline           | L44] 2024-12-11T21:13:10+0530: Starting data pipeline... | pipeline.py
+[INFO   | pipeline           | L15] 2024-12-11T21:13:10+0530: Starting download task... | pipeline.py
+[INFO   | task_engine           | L542] 2024-12-11T21:13:10+0530: Task run failed with exception: ValueError('The specified path is not a directory: F:\\PythonBase\\evonith-datafeed-app\\evonith_datafeed\\data') - Retry 1/3 will start immediately | task_engine.py
+[INFO   | pipeline           | L15] 2024-12-11T21:13:10+0530: Starting download task... | pipeline.py
+[INFO   | task_engine           | L542] 2024-12-11T21:13:10+0530: Task run failed with exception: ValueError('The specified path is not a directory: F:\\PythonBase\\evonith-datafeed-app\\evonith_datafeed\\data') - Retry 2/3 will start immediately | task_engine.py
+[INFO   | pipeline           | L15] 2024-12-11T21:13:10+0530: Starting download task... | pipeline.py
+[INFO   | task_engine           | L542] 2024-12-11T21:13:10+0530: Task run failed with exception: ValueError('The specified path is not a directory: F:\\PythonBase\\evonith-datafeed-app\\evonith_datafeed\\data') - Retry 3/3 will start immediately | task_engine.py
+[INFO   | pipeline           | L15] 2024-12-11T21:13:10+0530: Starting download task... | pipeline.py
+[ERROR   | task_engine           | L554] 2024-12-11T21:13:10+0530: Task run failed with exception: ValueError('The specified path is not a directory: F:\\PythonBase\\evonith-datafeed-app\\evonith_datafeed\\data') - Retries are exhausted | task_engine.py
+Traceback (most recent call last):
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 781, in run_context
+    yield self
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 1337, in run_task_sync
+    engine.call_task_fn(txn)
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 804, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\utilities\callables.py", line 206, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "f:\PythonBase\evonith-datafeed-app\evonith_datafeed\src\workflows\pipeline.py", line 16, in download_data_task
+    file_path, time_status = download_csv()
+                             ^^^^^^^^^^^^^^
+  File "f:\PythonBase\evonith-datafeed-app\evonith_datafeed\src\data\downloader.py", line 51, in download_csv
+    clean_folder(DOWNLOAD_DIR)
+  File "f:\PythonBase\evonith-datafeed-app\evonith_datafeed\src\utils\helper_functions_downloader.py", line 24, in clean_folder
+    raise ValueError(f"The specified path is not a directory: {folder_path}")
+ValueError: The specified path is not a directory: F:\PythonBase\evonith-datafeed-app\evonith_datafeed\data
+[ERROR   | task_engine           | L272] 2024-12-11T21:13:10+0530: Finished in state Failed('Task run encountered an exception ValueError: The specified path is not a directory: F:\\PythonBase\\evonith-datafeed-app\\evonith_datafeed\\data') | task_engine.py
+[ERROR   | flow_engine           | L725] 2024-12-11T21:13:10+0530: Encountered exception during execution: ValueError('The specified path is not a directory: F:\\PythonBase\\evonith-datafeed-app\\evonith_datafeed\\data') | flow_engine.py
+Traceback (most recent call last):
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\flow_engine.py", line 721, in run_context
+    yield self
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\flow_engine.py", line 1331, in run_flow_sync
+    engine.call_flow_fn()
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\flow_engine.py", line 744, in call_flow_fn
+    result = call_with_parameters(self.flow.fn, self.parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\utilities\callables.py", line 206, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "f:\PythonBase\evonith-datafeed-app\evonith_datafeed\src\workflows\pipeline.py", line 48, in data_pipeline
+    file_path, time_status = download_data_task()
+                             ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\tasks.py", line 1002, in __call__
+    return run_task(
+           ^^^^^^^^^
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 1526, in run_task
+    return run_task_sync(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 1339, in run_task_sync
+    return engine.state if return_type == "state" else engine.result()
+                                                       ^^^^^^^^^^^^^^^
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 482, in result
+    raise self._raised
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 781, in run_context
+    yield self
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 1337, in run_task_sync
+    engine.call_task_fn(txn)
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\task_engine.py", line 804, in call_task_fn
+    result = call_with_parameters(self.task.fn, parameters)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\princ\AppData\Local\Programs\Python\Python312\Lib\site-packages\prefect\utilities\callables.py", line 206, in call_with_parameters
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "f:\PythonBase\evonith-datafeed-app\evonith_datafeed\src\workflows\pipeline.py", line 16, in download_data_task
+    file_path, time_status = download_csv()
+                             ^^^^^^^^^^^^^^
+  File "f:\PythonBase\evonith-datafeed-app\evonith_datafeed\src\data\downloader.py", line 51, in download_csv
+    clean_folder(DOWNLOAD_DIR)
+  File "f:\PythonBase\evonith-datafeed-app\evonith_datafeed\src\utils\helper_functions_downloader.py", line 24, in clean_folder
+    raise ValueError(f"The specified path is not a directory: {folder_path}")
+ValueError: The specified path is not a directory: F:\PythonBase\evonith-datafeed-app\evonith_datafeed\data
+[INFO   | _client           | L1025] 2024-12-11T21:13:11+0530: HTTP Request: POST https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/flow_runs/b9a64a4b-9a1d-499f-b01d-db7cc6885dcf/set_state "HTTP/1.1 201 Created" | _client.py
+[ERROR   | flow_engine           | L685] 2024-12-11T21:13:11+0530: Finished in state Failed('Flow run encountered an exception: ValueError: The specified path is not a directory: F:\\PythonBase\\evonith-datafeed-app\\evonith_datafeed\\data') | flow_engine.py
+[INFO   | _client           | L1740] 2024-12-11T21:13:11+0530: HTTP Request: POST https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/logs/ "HTTP/1.1 202 Accepted" | _client.py
+[WARNING   | services           | L161] 2024-12-11T21:13:12+0530: Still processing items: 6 items remaining... | services.py
+[INFO   | _client           | L1740] 2024-12-11T21:13:12+0530: HTTP Request: GET https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/flows/f330fe23-85aa-47d8-b38a-c03276e2942b "HTTP/1.1 200 OK" | _client.py
+[INFO   | app           | L16] 2024-12-11T21:14:50+0530: Start Time 2024-12-11 21:14:50.513611 | app.py
+[INFO   | app           | L17] 2024-12-11T21:14:50+0530: Starting the data pipeline | app.py
+[INFO   | _client           | L1025] 2024-12-11T21:14:51+0530: HTTP Request: POST https://api.prefect.cloud/api/accounts/168911c1-8bef-4637-8d44-baa9c6ff9a8e/workspaces/6840fcb2-db88-4c53-bff9-3704156490b1/flows/ "HTTP/1.1 200 OK" | _client.py
